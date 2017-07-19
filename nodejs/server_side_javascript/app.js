@@ -5,10 +5,10 @@ var express = require('express');
 var app = express();
 
 //jade 템플릿 엔진과 express를 연결하는 코드, 템플릿 쓰기 위한 어플리케이션 설정
-app.set('view engine','jade');
+app.set('view engine', 'jade');
 
 //템플리트가 있는 디렉토리, views라는 이름이 관행
-app.set('views','/views');
+app.set('views', './views');
 
 //정적인 파일이 위치할 폴더를 지정하는 기능 -->public라는 폴더를 지정함
 app.use(express.static('public'));
@@ -21,7 +21,7 @@ app.get('/', function(req,res){
 //가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
 app.get('/template',function(req,res){
   res.render('temp');
-})
+});
 
 //출력되는 메시지는 html태그 사용 가능하다.
 app.get('/login',function(req,res){
@@ -54,7 +54,7 @@ app.get('/dynamic',function(req,res){
   </html>
   `;
   res.send(output);
-})
+});
 
 //listen메소드에 포트번호를 지정, listen이 성공되면 callback함수를 통해 conneted 3000port출력
 app.listen(3000, function() {
