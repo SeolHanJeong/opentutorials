@@ -18,6 +18,11 @@ app.get('/', function(req,res){
   res.send("Welcome to home");
 });
 
+//가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
+app.get('/template',function(req,res){
+  res.render('temp');
+})
+
 //출력되는 메시지는 html태그 사용 가능하다.
 app.get('/login',function(req,res){
   res.send('<h1>login plsease</h1>');
