@@ -4,6 +4,12 @@ var express = require('express');
 //express모듈은 함수이다.
 var app = express();
 
+//jade 템플릿 엔진과 express를 연결하는 코드, 템플릿 쓰기 위한 어플리케이션 설정
+app.set('view engine','jade');
+
+//템플리트가 있는 디렉토리, views라는 이름이 관행
+app.set('views','/views');
+
 //정적인 파일이 위치할 폴더를 지정하는 기능 -->public라는 폴더를 지정함
 app.use(express.static('public'));
 
