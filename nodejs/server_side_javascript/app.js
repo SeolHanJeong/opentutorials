@@ -23,7 +23,7 @@ app.get('/', function(req,res){
 });
 
 //topic경로 추가, 쿼리스트링에 따라 새로운 페이지 보여주는 요청을 필요 --> req객체 사용
-app.get('/topic',function(req,res){
+app.get('/topic/:id',function(req,res){
   var topics = [
     'javascript is... ',
     'nodejs is ...',
