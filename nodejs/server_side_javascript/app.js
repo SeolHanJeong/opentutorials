@@ -1,8 +1,9 @@
 //express 모듈을 제어하기위해 express변수 생성
 var express = require('express');
-
 //express모듈은 함수이다.
 var app = express();
+//bodyParser를 사용하기 위해 모듈을 가져온다
+var bodyParser = require('body-parser');
 
 //jade의 소스코드를 페이지에서 소스보기 했을 때 자동 정렬 해준다.
 //--> jade express code pretty로 search
@@ -16,6 +17,12 @@ app.set('views', './views');
 
 //정적인 파일이 위치할 폴더를 지정하는 기능 -->public라는 폴더를 지정함
 app.use(express.static('public'));
+
+// bodyParser라는 모듈을 객체.use사용해 객체에 붙인다고 생각
+// 즉 app객체, express객체에  bodyParser객체를 추가한다.
+// 제일 앞쪽에서 bodyParser이 대기하다가 가장먼저 데이터가 거친 후에 사용자가
+// post방식을 사용할 수 있도록 해준다
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //url을 직접 치고 들어오는 것은 get방식 접속, 다른 방식으로는 post방식이 있다.
 app.get('/', function(req,res){
