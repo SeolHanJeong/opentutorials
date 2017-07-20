@@ -29,6 +29,15 @@ app.get('/topic',function(req,res){
     'nodejs is ...',
     'express is ...'
   ];
+
+  var output = `
+  <a href = "/topic?id=0">JavaScript</a><br>
+  <a href = "/topic?id=1">Nodejs</a><br>
+  <a href = "/topic?id=2">Express</a><br><br>
+  ${topics[req.query.id]}
+  `;
+  
+  res.send(output);
 });
 
 //가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
