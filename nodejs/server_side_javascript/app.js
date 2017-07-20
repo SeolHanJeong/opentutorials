@@ -42,7 +42,24 @@ app.get('/topic/:id',function(req,res){
 
 //시멘틱 url 추가 사용
 app.get('/topic/:id/:mode',function(req,res){
-  res.send(req.params.id+','+req.params.mode)
+  res.send(req.params.id+','+req.params.mode);
+});
+
+//post방식 사용
+app.get('/form',function(req,res){
+  res.render('form');
+});
+
+app.get('/form_receiver',function(req,res){
+  var title = req.query.title;
+  var description = req.query.description;
+  res.send(title+','+description);
+});
+
+app.post('/form_receiver',function(req,res){
+  var title = req.body.title;
+  var description = req.body.description;
+  res.send(title+','+description);
 });
 
 //가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
