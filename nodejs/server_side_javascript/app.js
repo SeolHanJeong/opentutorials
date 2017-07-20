@@ -34,7 +34,7 @@ app.get('/topic/:id',function(req,res){
   <a href = "/topic?id=0">JavaScript</a><br>
   <a href = "/topic?id=1">Nodejs</a><br>
   <a href = "/topic?id=2">Express</a><br><br>
-  ${topics[req.query.id]}
+  ${topics[req.params.id]}
   `;
   
   res.send(output);
