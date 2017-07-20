@@ -4,6 +4,10 @@ var express = require('express');
 //express모듈은 함수이다.
 var app = express();
 
+//jade의 소스코드를 페이지에서 소스보기 했을 때 자동 정렬 해준다.
+//--> jade express code pretty로 search
+app.locals.pretty = true;
+
 //jade 템플릿 엔진과 express를 연결하는 코드, 템플릿 쓰기 위한 어플리케이션 설정
 app.set('view engine', 'jade');
 
@@ -20,7 +24,7 @@ app.get('/', function(req,res){
 
 //가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
 app.get('/template',function(req,res){
-  res.render('temp');
+  res.render('temp',{time:Date(), _title:'Jade연습입니다.'});
 });
 
 //출력되는 메시지는 html태그 사용 가능하다.
