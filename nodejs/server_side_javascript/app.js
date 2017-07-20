@@ -36,8 +36,13 @@ app.get('/topic/:id',function(req,res){
   <a href = "/topic?id=2">Express</a><br><br>
   ${topics[req.params.id]}
   `;
-  
+
   res.send(output);
+});
+
+//시멘틱 url 추가 사용
+app.get('/topic/:id/:mode',function(req,res){
+  res.send(req.params.id+','+req.params.mode)
 });
 
 //가져온 템플리트를 렌더링 해주기 위해 render() 함수 사용
