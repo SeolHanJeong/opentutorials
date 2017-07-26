@@ -72,6 +72,7 @@ app.post('/topic',function(req,res){
        console.log(err);
        res.status(500).send('Internal Server Error');
      }
+     //redirect는 내가 설정한 주소로 보내버린다.
      res.redirect('/topic/'+title);
   });
 });
