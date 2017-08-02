@@ -22,7 +22,7 @@ app.set('views', './views_mysql');
 //사용하는 engine은 jade엔진을 사용한다
 app.set('view engine', 'jade');
 
-//새로운 글 추가
+//add상단에 보여지는 목록들
 app.get('/topic/add', function(req, res) {
   var sql = 'SELECT id,title FROM topic';
   conn.query(sql, function(err, topics, fields) {
@@ -35,7 +35,7 @@ app.get('/topic/add', function(req, res) {
     });
   });
 });
-
+//add.jade를 통해 db에 데이터 추가
 app.post('/topic/add', function(req, res) {
   var title = req.body.title;
   var description = req.body.description;
