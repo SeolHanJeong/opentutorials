@@ -11,6 +11,20 @@ app.set('views', './views_file');
 app.set('view engine','jade');
 
 
+app.post('/topic',function(req,res){
+  var title = req.body.title;
+  var description = req.body.description;
+  //writeFile(폴더/파일명, 파일내용, 에러여부)
+  fs.writeFile('data/'+title,description,function(err){
+     if(err){
+       console.log(err);
+       res.status(500).send('Internal Server Error');
+     }
+     //redirect는 내가 설정한 주소로 보내버린다.
+     res.redirect('/topic/'+title);
+  });
+});
+
 app.get('/topic/new',function(req,res){
   fs.readdir('data',function(err,files){
     if(err){
@@ -62,20 +76,6 @@ app.get(['/topic','/topic/:id'],function(req,res){
 //   });
 // });
 
-
-app.post('/topic',function(req,res){
-  var title = req.body.title;
-  var description = req.body.description;
-  //writeFile(폴더/파일명, 파일내용, 에러여부)
-  fs.writeFile('data/'+title,description,function(err){
-     if(err){
-       console.log(err);
-       res.status(500).send('Internal Server Error');
-     }
-     //redirect는 내가 설정한 주소로 보내버린다.
-     res.redirect('/topic/'+title);
-  });
-});
 
 
 app.listen(3000,function(){
