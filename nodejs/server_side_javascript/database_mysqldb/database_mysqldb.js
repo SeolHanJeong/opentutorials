@@ -1,21 +1,21 @@
-//설치한 oreintjs를 OrientDB객체에 담음
-var OrientDB = require('orientjs');
+var mysql = require('mysql');
 
-//서버연결
-var server = OrientDB({
-  host:'localhost',
-  port:'2480',
-  username:'root',
-  password:'dlselrh24'
+var conn = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'dlselrh24',
+  database: 'o2'
 });
 
-//연결된 서버의 이름이 o2인 db를 사용
-var db = server.use('o2');
+conn.connect();
 
-
-var rec = db.record.get('#21:0')
-   .then(
-      function(record){
-         console.log('Loaded Record:', record);
-       }
-   );
+var sql = 'SELECT * FROM topic';
+conn.query(sql, function(error, results, fields) {
+  if (error) {
+    console.log(err);
+  } else {
+    console.log('results', results);
+    console.log('fields', fields);
+  }
+});
+conn.end();
