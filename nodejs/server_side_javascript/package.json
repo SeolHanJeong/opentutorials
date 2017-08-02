@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jade": "^1.11.0",
+    "node-mysql": "^0.4.2",
     "supervisor": "^0.12.0",
     "underscore": "^1.8.3"
   }
